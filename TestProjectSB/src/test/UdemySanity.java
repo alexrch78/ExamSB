@@ -2,12 +2,14 @@ package test;
 
 import org.testng.annotations.Test;
 
-import pageObject.UdemyBasePage;
-import pageObject.UdemyCourseSection;
-import pageObject.UdemyHomePage;
-import pageObject.UdemyLoginPage;
-import pageObject.UdemyPopularCoursesPage;
-import pageObject.UdemyRelevantCoursesPage;
+import enums.Categories;
+import enums.SubCategories;
+import pageObject.Udemy.UdemyBasePage;
+import pageObject.Udemy.UdemyCourseSection;
+import pageObject.Udemy.UdemyHomePage;
+import pageObject.Udemy.UdemyLoginPage;
+import pageObject.Udemy.UdemyPopularCoursesPage;
+import pageObject.Udemy.UdemyRelevantCoursesPage;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -29,11 +31,16 @@ public class UdemySanity {
 	
   @Test
   public void testSeleniumCourses() {
+	  Categories category = Categories.DEVELOPMENT;
+	  SubCategories subCategory = SubCategories.WEB_DEVELOPMENT;
+	  Boolean usingMenuBarInSelecting = true;
+	  String topic = "selenium";
+	  
 	  UdemyBasePage basePage = new UdemyBasePage(driver);
 	  UdemyLoginPage login = basePage.goToLogin();
 	  UdemyHomePage homePage = login.performLogin(USERNAME, PASSWORD);
-	  UdemyPopularCoursesPage popularCourses =  homePage.headerSection.selectCategory(category).selectSubCategory(subCategory);
-	  UdemyRelevantCoursesPage relevantCoursesPage = popularCourses.headerSection.searchForCourserWithSearchBox(topic);
+	  UdemyPopularCoursesPage popularCourses =  homePage.menuBarSection.selectCategoryAndSubCategory(category, subCategory); //Can also perform this action with header instead of menu bar
+	  UdemyRelevantCoursesPage relevantCoursesPage = popularCourses.headerSection.searchForCourseWithSearchBox(topic);
 	  relevantCoursesPage.openFilters().choosePriceFilter(PriceOptions.FREE);
 	  List<UdemyCourseSection> coursesCollection = relevantCourses.coursesSectionCollection;
 	  Assert.assertTrue(coursesCollection.length >= minimumNumberOfCourses);
@@ -48,6 +55,7 @@ public class UdemySanity {
   
   @BeforeMethod
   public void beforeMethod() {
+	  System.setProperty("webdriver.chrome.driver", "./src/lib/chromedriver.exe");
 	  driver = new ChromeDriver();
   }
 
