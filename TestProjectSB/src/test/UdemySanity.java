@@ -3,6 +3,8 @@ package test;
 import org.testng.annotations.Test;
 
 import enums.Categories;
+import enums.FilterCategories;
+import enums.FilterOptions;
 import enums.SubCategories;
 import pageObject.Udemy.UdemyBasePage;
 import pageObject.Udemy.UdemyCourseSection;
@@ -35,15 +37,20 @@ public class UdemySanity {
 	  SubCategories subCategory = SubCategories.WEB_DEVELOPMENT;
 	  Boolean usingMenuBarInSelecting = true;
 	  String topic = "selenium";
+	  int minimumNumberOfCourses = 2;
+	  String keyWord = "Selenium";
+	  FilterCategories filterCategory = FilterCategories.PRICE;
+	  FilterOptions filterOption = FilterOptions.FREE;
 	  
 	  UdemyBasePage basePage = new UdemyBasePage(driver);
 	  UdemyLoginPage login = basePage.goToLogin();
 	  UdemyHomePage homePage = login.performLogin(USERNAME, PASSWORD);
 	  UdemyPopularCoursesPage popularCourses =  homePage.menuBarSection.selectCategoryAndSubCategory(category, subCategory); //Can also perform this action with header instead of menu bar
 	  UdemyRelevantCoursesPage relevantCoursesPage = popularCourses.headerSection.searchForCourseWithSearchBox(topic);
-	  relevantCoursesPage.openFilters().choosePriceFilter(PriceOptions.FREE);
-	  List<UdemyCourseSection> coursesCollection = relevantCourses.coursesSectionCollection;
-	  Assert.assertTrue(coursesCollection.length >= minimumNumberOfCourses);
+	  relevantCoursesPage.openFilters().chooseFilter(filterCategory, filterOption);
+	  List<UdemyCourseSection> coursesCollection = relevantCoursesPage.coursesSectionCollection;
+	  
+	  Assert.assertTrue(coursesCollection.size() >= minimumNumberOfCourses);
 	  Boolean keyWordExists = false;
 	  for(UdemyCourseSection course : coursesCollection) {
 		  Assert.assertTrue(course.isFree());
