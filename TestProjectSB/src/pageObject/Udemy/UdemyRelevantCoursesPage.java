@@ -14,8 +14,8 @@ public class UdemyRelevantCoursesPage extends BasePage {
 	}
 
 	public UdemyCourseFilterPageSection openFilters() {
-
-		
+		driver.findElement(FILTERS_CLICK).click();
+		return new UdemyCourseFilterPageSection(driver);
 	}
 
 }
