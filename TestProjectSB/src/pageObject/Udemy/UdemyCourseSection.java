@@ -3,19 +3,21 @@ package pageObject.Udemy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import pageObject.BaseReproducedSection;
-
-public class UdemyCourseSection  extends BaseReproducedSection{
+public class UdemyCourseSection {
 	
-	private static By PRICE = By.xpath(".//div[contains(@class,'price-text--base-price__discount')]");
+	private static By PRICE = By.cssSelector("[data-purpose=\"course-price-text\"]");
 	private static By TITLE = By.cssSelector("[data-purpose=\"search-course-card-title\"]");
+	private WebElement rootElement;
 
 	public UdemyCourseSection(WebElement rootElement) {
-		super(rootElement);
+		this.rootElement = rootElement;
 	}
 
 	public boolean isFree() {
-		return rootElement.findElement(PRICE).getAttribute("innerText").contains("Free");
+		WebElement priceElement = rootElement.findElement(PRICE);
+		String priceText = priceElement.getAttribute("innerText");
+		boolean isFree = priceText.contains("Free");
+		return isFree;
 	}
 
 	public String getTitle() {

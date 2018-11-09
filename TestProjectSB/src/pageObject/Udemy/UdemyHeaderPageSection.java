@@ -1,6 +1,7 @@
 package pageObject.Udemy;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -13,7 +14,6 @@ public class UdemyHeaderPageSection extends BasePage {
 
 	private final By CATEGORIES = By.id("header.browse");
 	private final By SEARCH = By.id("header-search-field");
-	private final By SERACH_BTN = By.cssSelector("[aria-label=\"Search\"]");
 	
 	public UdemyHeaderPageSection(WebDriver driver) {
 		super(driver);
@@ -34,7 +34,7 @@ public class UdemyHeaderPageSection extends BasePage {
 
 	public UdemyRelevantCoursesPage searchForCourseWithSearchBox(String topic) {
 			driver.findElement(SEARCH).sendKeys(topic);
-			driver.findElement(SERACH_BTN).click();
+			driver.findElement(SEARCH).sendKeys(Keys.ENTER);
 			return new UdemyRelevantCoursesPage(driver);
 	}
 

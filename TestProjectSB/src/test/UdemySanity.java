@@ -35,7 +35,6 @@ public class UdemySanity {
   public void testSeleniumCourses() {
 	  Categories category = Categories.DEVELOPMENT;
 	  SubCategories subCategory = SubCategories.WEB_DEVELOPMENT;
-	  Boolean usingMenuBarInSelecting = true;
 	  String topic = "selenium";
 	  int minimumNumberOfCourses = 2;
 	  String keyWord = "Selenium";
@@ -45,25 +44,28 @@ public class UdemySanity {
 	  UdemyBasePage basePage = new UdemyBasePage(driver);
 	  UdemyLoginPage login = basePage.goToLogin();
 	  UdemyHomePage homePage = login.performLogin(USERNAME, PASSWORD);
-	  UdemyPopularCoursesPage popularCourses =  homePage.menuBarSection.selectCategoryAndSubCategory(category, subCategory); //Can also perform this action with header instead of menu bar
+	  UdemyPopularCoursesPage popularCourses =  homePage.headerSection.selectCategoryAndSubCategory(category, subCategory); //Can also perform this action with menu bar instead of menu bar
 	  UdemyRelevantCoursesPage relevantCoursesPage = popularCourses.headerSection.searchForCourseWithSearchBox(topic);
 	  relevantCoursesPage.openFilters().chooseFilter(filterCategory, filterOption);
-	  List<UdemyCourseSection> coursesCollection = relevantCoursesPage.coursesSectionCollection;
+	  List<UdemyCourseSection> coursesCollection = relevantCoursesPage.getCoursesSections();
 	  
-	  Assert.assertTrue(coursesCollection.size() >= minimumNumberOfCourses);
+	  Assert.assertTrue(coursesCollection.size() >= minimumNumberOfCourses, "number of courses is less than minimum");
 	  Boolean keyWordExists = false;
+	  int index = 1;
 	  for(UdemyCourseSection course : coursesCollection) {
-		  Assert.assertTrue(course.isFree());
+		  Assert.assertTrue(course.isFree(), String.format("course number %s is not free", Integer.toString(index)));
 		  if(!keyWordExists && course.getTitle().contains(keyWord))
 			  keyWordExists = true;
+		  index++;
 	  }
-	  Assert.assertTrue(keyWordExists);
+	  Assert.assertTrue(keyWordExists, "keyword selenium doesn't exist");
   }
   
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "./src/lib/chromedriver.exe");
 	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
   }
 
   @AfterMethod
