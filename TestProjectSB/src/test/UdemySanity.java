@@ -63,7 +63,7 @@ public class UdemySanity {
   
   @BeforeMethod
   public void beforeMethod() {
-	  System.setProperty("webdriver.chrome.driver", "./src/lib/chromedriver.exe");
+	  //System.setProperty("webdriver.chrome.driver", "./src/lib/chromedriver.exe");
 	  driver = new ChromeDriver();
 	  driver.manage().window().maximize();
   }
