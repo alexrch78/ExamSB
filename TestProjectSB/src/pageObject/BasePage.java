@@ -9,7 +9,7 @@ public abstract class BasePage {
 	
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
-		this.wait = new WebDriverWait(driver, 3000);
+		this.wait = new WebDriverWait(driver, 30);
 	}
 
 }

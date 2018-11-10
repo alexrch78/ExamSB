@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-11-09T21:22:20Z" name="Default suite" finished-at="2018-11-09T21:22:53Z" duration-ms="32890">
+  <suite started-at="2018-11-10T16:59:51Z" name="Default suite" finished-at="2018-11-10T17:00:31Z" duration-ms="40615">
     <groups>
     </groups>
-    <test started-at="2018-11-09T21:22:20Z" name="Default test" finished-at="2018-11-09T21:22:53Z" duration-ms="32890">
+    <test started-at="2018-11-10T16:59:51Z" name="Default test" finished-at="2018-11-10T17:00:31Z" duration-ms="40615">
       <class name="test.UdemySanity">
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-09T21:22:20Z" name="beforeClass" finished-at="2018-11-09T21:22:20Z" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-10T16:59:51Z" name="beforeClass" finished-at="2018-11-10T16:59:51Z" duration-ms="29" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-09T21:22:20Z" name="beforeMethod" finished-at="2018-11-09T21:22:24Z" duration-ms="4628" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-10T16:59:51Z" name="beforeMethod" finished-at="2018-11-10T16:59:56Z" duration-ms="4998" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="testSeleniumCourses()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-09T21:22:24Z" name="testSeleniumCourses" finished-at="2018-11-09T21:22:51Z" duration-ms="26137" status="PASS">
+        <test-method signature="testSeleniumCourses()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-10T16:59:56Z" name="testSeleniumCourses" finished-at="2018-11-10T17:00:29Z" duration-ms="33461" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSeleniumCourses -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-09T21:22:51Z" name="afterMethod" finished-at="2018-11-09T21:22:53Z" duration-ms="2092" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-10T17:00:29Z" name="afterMethod" finished-at="2018-11-10T17:00:31Z" duration-ms="2095" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-09T21:22:53Z" name="afterClass" finished-at="2018-11-09T21:22:53Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:test.UdemySanity@609cd4d8]" started-at="2018-11-10T17:00:31Z" name="afterClass" finished-at="2018-11-10T17:00:31Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
